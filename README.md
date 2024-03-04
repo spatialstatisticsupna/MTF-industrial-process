@@ -1,2 +1,47 @@
 # MTF-industrial-process
 Data and R code to reproduce the results described in the paper "An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes" (Miguelez et al., 2024).
+# Data
+This folder contains 3 datasets:
+ 1) `oee_data.Rds`: complete dataset from 2019-12-16 until 2021-08-25, including holidays, weekends and weeks with missing data
+ 2) `oee_data_complete_weeks.Rds`: subset of 1) containing complete weeks without holidays and weekends
+ 3) `oee_data_4weeks.Rsd`: subset o 2) containing data from week 21 to week 24 of the year 2020
+All of the datasets contain the following variables:
+ - **lsp**: observation period id
+ - **day**: starting date
+ - **hour**: starting hour
+ - **sh.id**: work shift id
+ - **new.sh**: 1=first observation of the work shift, 0=otherwise
+ - **wday**: weekday
+ - **tday**: shift (**M**orning, **A**fternoon, **N**ight)
+ - **week.id**: week id
+ - **inistop**: 1=the machine is not working, 0=the machine is working
+ - **of.id**: production order id
+ - **new.of**: 1=first observation of the production order, 0=otherwise
+ - **ref**: reference
+ - **ics**: ideal cycle speed, units per minute
+ - **TU**: total units
+ - **DU**: defective units
+ - **TgU**: target units
+ - **OT**: period length, minutes
+ - **SBT**: stand-by time, minutes
+ - **LT**: loading time = `OT`-`SBT`
+ - **rcs**: real cycle speed = `TU`/`LT`
+ - **lo**: loading rate = `LT`/`OT`
+ - **DT**: down time, minutes
+ - **OpT**: operating time = `LT`-`DT`
+ - **av**: availability rate = `OpT`/`LT`
+ - **PLT**: performance losses time, minutes
+ - **NOpT**: net operating time = `OpT`-`PLT`
+ - **pf**: performance rate = `NOpT`/`OpT`
+ - **QLT**: quality losses time, minutes
+ - **VT**: valuable time = `NOpT`-`QLT`
+ - **qu**: quality rate = `VT`/`NOpT`
+ - *oee***: `av`$\times$`pf`$\times$`qu`
+ - **nstops**: number of stops
+ - **hum**: % of humidity
+ - **temp**: temperature in ºC
+ - **wPT**: work shift time
+ - **av.level**: availability level ($>80\%$: very good, $>60\%, <80\%$: acceptable, $>40\%, <60\%: improbable, <40\%: very poor)
+ - **pf.level**: performance level
+ - **qu.level**: quality level
+ - **oee.level**: oee level
