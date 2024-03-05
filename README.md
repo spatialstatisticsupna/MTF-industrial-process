@@ -22,7 +22,7 @@ All of the datasets contain the following variables:
  - **ics**: ideal cycle speed, units per minute
  - **TU**: total units
  - **DU**: defective units
- - **TgU**: target units
+ - **TgU**: target units, `OpT`$\times$`ics`
  - **OT**: period length, minutes
  - **SBT**: stand-by time, minutes
  - **LT**: loading time = `OT`-`SBT`
