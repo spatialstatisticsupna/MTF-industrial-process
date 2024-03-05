@@ -37,7 +37,7 @@ All of the datasets contain the following variables:
  - **QLT**: quality losses time, minutes
  - **VT**: valuable time = `NOpT`-`QLT`
  - **qu**: quality rate = `VT`/`NOpT`
- - **oee**: `av`$\times$`pf`$\times$`qu`
+ - **oee**: `av` $\times$ `pf` $\times$ `qu`
  - **nstops**: number of stops
  - **hum**: % of humidity
  - **temp**: temperature in ºC
