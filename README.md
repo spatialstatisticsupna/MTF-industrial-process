@@ -42,7 +42,7 @@ All of the datasets contain the following variables:
  - **hum**: % of humidity
  - **temp**: temperature in ºC
  - **wPT**: work shift time
- - **av.level**: availability level ($>80\%$: very good, $>60\%, <80\%$: acceptable, $>40\%, <60\%: improvable, <40\%: very poor)
+ - **av.level**: availability level (>80\%: very good, >60\%, <80\%: acceptable, $>40\%, <60\%: improvable, <40\%: very poor)
  - **pf.level**: performance level
  - **qu.level**: quality level
  - **oee.level**: oee level
