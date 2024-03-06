@@ -2,9 +2,9 @@
 Data and R code to reproduce the results described in the paper "An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes" (Miguelez et al., 2024).
 # Data
 This folder contains 3 datasets:
- 1) `oee_data.Rds`: complete dataset from 2019-12-16 until 2021-08-25, including holidays, weekends and weeks with missing data
+ 1) `oee_data.Rds`: complete dataset from 2019-12-16 to 2021-08-25, including holidays, weekends and weeks with missing data
  2) `oee_data_complete_weeks.Rds`: subset of `oee_data.Rds` containing complete weeks without holidays and weekends
- 3) `oee_data_4weeks.Rsd`: subset o `oee_data_complete_weeks.Rds` containing data from week 21 to week 24 of the year 2020
+ 3) `oee_data_4weeks.Rsd`: subset of `oee_data_complete_weeks.Rds` containing data from week 21 to week 24 of the year 2020
 
 All of the datasets contain the following variables:
  - **lsp**: observation period id
