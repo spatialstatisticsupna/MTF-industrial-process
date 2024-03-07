@@ -1,5 +1,6 @@
 # MTF-industrial-process
 Data and R code to reproduce the results described in the paper "An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes" (Miguelez et al., 2024).
+
 # Data
 This folder contains 3 datasets:
  1) `oee_data.Rds`: complete dataset from 2019-12-16 to 2021-08-25, including holidays, weekends and weeks with missing data
@@ -46,3 +47,12 @@ All of the datasets contain the following variables:
  - **pf.level**: performance level
  - **qu.level**: quality level
  - **oee.level**: oee level
+
+# MVTF
+This folder contains all the code required to run de multivariate and univariate models and reproduce the Figures 5.1 and 5.2 of the paper.
+ - functions.R
+ - update_model.R
+ - run_mv_model.R
+ - run_uv_model.R
+ - mvtf_figures.R
+Computations were run using R-4.2.1.
