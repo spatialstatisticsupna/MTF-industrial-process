@@ -56,5 +56,5 @@ This folder contains all the code required to run de multivariate and univariate
  - run_mv_model.R
  - run_uv_model.R
  - mvtf_figures.R
- - 
+
 Computations were run using R-4.2.1.
