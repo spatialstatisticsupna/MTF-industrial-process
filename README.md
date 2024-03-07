@@ -16,7 +16,7 @@ All of the datasets contain the following variables:
  - **wday**: weekday
  - **tday**: shift (**M**orning, **A**fternoon, **N**ight)
  - **week.id**: week id
- - **inistop**: 1=the machine is not working, 0=the machine is working
+ - **inistop**: 1=the machine is inactive at the beginning of the period, 0=the machine is active
  - **of.id**: production order id
  - **new.of**: 1=first observation of the production order, 0=otherwise
  - **ref**: reference
@@ -49,10 +49,12 @@ All of the datasets contain the following variables:
  - **oee.level**: oee level
 
 # MVTF
-This folder contains all the code required to run de multivariate and univariate models and reproduce the Figures 5.1 and 5.2 of the paper.
+This folder contains all the code required to run de multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.
  - functions.R
  - update_model.R
+ - theme_mtf.R
  - run_mv_model.R
  - run_uv_model.R
  - mvtf_figures.R
+ - 
 Computations were run using R-4.2.1.
