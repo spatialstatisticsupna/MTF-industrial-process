@@ -49,7 +49,7 @@ All of the datasets contain the following variables:
  - **oee.level**: oee level
 
 # MVTF
-This folder contains all the code required to run de multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.
+This folder contains all the code required to run the multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.
  - functions.R
  - update_model.R
  - theme_mtf.R
