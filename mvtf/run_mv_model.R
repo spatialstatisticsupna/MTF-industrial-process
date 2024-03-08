@@ -202,8 +202,6 @@ for (wk in 1:length(weeks)) {   # start loop for weeks
       # compute absolute and root squared errors
       w    = U[,'wday']
       s    = U[,'tday']
-      prev = U[,'class']
-      
       
       
       for (jj in 1:m1) {
