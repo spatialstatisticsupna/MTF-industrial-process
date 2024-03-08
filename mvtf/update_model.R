@@ -9,7 +9,7 @@ InitPriorDirichlet = function(C,K,W,alpha,wnames=NULL,snames=NULL) {
   #  > C     : number of classes
   #  > K     : number of states
   #  > W     : number of work shifts
-  #  > alpha : concentration parameter (scalar)
+  #  > alpha : initial common pseudo-count (scalar)
   #  > wnames: working days names
   #  > snames: working shifts names
 
@@ -386,7 +386,7 @@ UpdateModel = function(ModelParams,data,ff,responses,others,ini.st.var,clus.vars
     w    <- (y %>% pull(group.vars[1]))[n] %>% as.character()
     #                                                     ^
     #                                 /\_________________/                     
-    # HE TENIDO QUE AÑADIR %>% as.character() PORQUE SINO EN ALGUNOS CASOS NO LEE BIEN Pi[w,s,c,] NO ME DIGAS POR QUÉ!!!!!
+    # HE TENIDO QUE AÃ‘ADIR %>% as.character() PORQUE SINO EN ALGUNOS CASOS NO LEE BIEN Pi[w,s,c,] NO ME DIGAS POR QUÃ‰!!!!!
     
     s      <- (y %>% pull(group.vars[2]))[n]
     prec   <- (y %>% pull(class.var))[n-1]
