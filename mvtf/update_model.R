@@ -147,18 +147,23 @@ Initialization = function(W,K,m,R1,R2,p,lags=1,wnames=NULL,snames=NULL,onames=NU
 DirExpVal = function(alpha) {
 
   # INPUT
-  # > alpha: Dirichlet distribution parameters
+  #  > alpha: Dirichlet distribution parameters
+  # 
+  # OUTPUT
+  #  > Expected value of the Dirichlet distribution
 
   return(alpha/sum(alpha))
 }
 
 ClassSelection = function(probs) {
-  
-  # (03/03/2023)
+
   # Random class selection based on a probability vector
   #
   # INPUT
-  # > probs: probability vector
+  #  > probs: probability vector
+  #
+  # OUTPUT
+  #  > i : selected class
   
   ap = cumsum(probs)
   u  = runif(1)
@@ -231,7 +236,7 @@ UpdateCovMatrix = function(V, H, P, g, y, u, ff) {
   #  > g : prior discount factor
   #  > y : response
   #  > u : covariates
-  #  > ff: forgetting factor
+  #  > ff: forgetting factor (scalar)
   #
   # OUTPUT:
   #  > Updated V
@@ -263,7 +268,7 @@ UpdateCoeffMatrix = function(H, P, y, u, ff) {
   #  > P : prior state matrix
   #  > y : response
   #  > u : covariates
-  #  > ff: forgetting factor
+  #  > ff: forgetting factor (scalar)
   #
   # OUTPUT:
   #  > Updated H
@@ -294,7 +299,7 @@ UpdateStateMatrix = function(P, u, ff, reini=TRUE, max.kappa=1000) {
   # INPUT:
   #  > P         : prior state matrix
   #  > u         : covariates
-  #  > ff        : forgetting factor
+  #  > ff        : forgetting factor (scalar)
   #  > reini     : reinitiate to identity in case of bad conditioning
   #  > max.kappa : maximum condition number allowed before reinitiate
   #
@@ -325,7 +330,7 @@ UpdateWeight = function(g, ff) {
   # Equation [3.3a]
   # INPUT:
   #  > g : prior discount factor
-  #  > ff: forgetting factor
+  #  > ff: forgetting factor (scalar)
   #
   # OUTPUT:
   #  > Updated g
@@ -347,7 +352,7 @@ UpdateModel = function(ModelParams,data,ff,responses,others,ini.st.var,clus.vars
   #  > data       : complete data
   #  > ff         : forgetting factor (vector of 2)
   #  > responses  
-  #  > others     : covariate names
+  #  > others     : covariates names
   #  > ini.st.var : which covariate marks the beginning of the sequence
   #  > clus.vars  : classification variables
   #  > class.var  : which variable contains the class label
