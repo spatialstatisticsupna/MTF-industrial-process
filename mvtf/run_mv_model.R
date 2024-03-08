@@ -27,9 +27,8 @@ source('update_model.R')
 
 # Times (minutes)
 # OT      : opening time
-# NWT     : non working time (lack of demand, stock out, strikes, security drillings, ...)
 # SBT     : stand by time (planned maintenance, starving, loading, handling, ...)
-# LT      : loading time (LT = OT - NWT - SBT)
+# LT      : loading time (LT = OT - SBT)
 # lo      : LT/OT
 # -------------------------------------
 # DT      : down time (failures, reactive maintenance, set-up, recalibration, ...)
@@ -47,7 +46,7 @@ source('update_model.R')
 # 
 # TIME SCHEDULE:
 # ---------------------------- OT ----------------------------
-# - NWT -|- SBT -|-------------------- LT --------------------
+# ----- SBT -----|-------------------- LT --------------------
 #                 --- DT ---|-------------- OpT --------------
 #                            -- PLT --|--------- NOpT --------
 #                                      - QLT -|------ VT -----
@@ -95,7 +94,7 @@ for (mod in names(ForecastResults)) {
 
 Fi = 0
 
-for (wk in 1:length(weeks)) {
+for (wk in 1:length(weeks)) {   # start loop for weeks
   OEEtr = OEEbw %>% filter(week.id %in% weeks[-wk])
   OEEte = OEEbw %>% filter(week.id == weeks[wk])
   N0    = nrow(OEEtr)
@@ -153,7 +152,7 @@ for (wk in 1:length(weeks)) {
   #################
   # Learning Step #
   #################
-  for (ii in 1:length(LAGS)) {
+  for (ii in 1:length(LAGS)) {   # start loop for lags in the learning step
     q = LAGS[ii]
     qname = paste0('q',q)
     Parameters[[qname]] = Initialization(
@@ -175,7 +174,7 @@ for (wk in 1:length(weeks)) {
   # (method for cluster assignment: knn / mahalanobis)
   cluster.assign = 'knn'
   
-  for (ii in 1:length(LAGS)) {
+  for (ii in 1:length(LAGS)) {   # start loop for lags in the forecasting step
     q = LAGS[ii]
     qname = paste0('q',q)
     Params = Parameters[[qname]]
@@ -194,7 +193,7 @@ for (wk in 1:length(weeks)) {
     # Prediction
     Centroids = Centers
     cat('\n  *** Prediction step in model with',q,'lags ... ***')
-    for (i in 1:L) {
+    for (i in 1:L) {    # start loop for prediction horizon
       j = i + Fi
       
       U = predictors(ClassTest, i, yn, q, xn, ini.st.var, 'class')
