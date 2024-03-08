@@ -23,7 +23,7 @@ source('update_model.R')
 # -------------------------------------
 
 # ics : ideal cycle speed (units/min)
-# rcs : real cycle speed (= units/LT) (new: 29/12/2023)
+# rcs : real cycle speed (= units/LT) 
 
 # Times (minutes)
 # OT      : opening time
@@ -45,6 +45,7 @@ source('update_model.R')
 # qu      : VT/NOpT
 # 
 # 
+# TIME SCHEDULE:
 # ---------------------------- OT ----------------------------
 # - NWT -|- SBT -|-------------------- LT --------------------
 #                 --- DT ---|-------------- OpT --------------
