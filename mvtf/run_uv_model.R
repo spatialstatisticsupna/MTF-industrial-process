@@ -270,7 +270,7 @@ for (h in 1:length(responses)) {
                              class.var='class', group.vars=c('wday','tday'),
                              lags=q, reini=reini)
       }
-      cat('\n  *** End of prediction step in model with',q,'lags, variable',yn,'... ***')
+      cat('\n  *** End of prediction step in model with',q,'lags, variable',yn,'... ***\n')
     }
     Fi = Fi + L
   }
