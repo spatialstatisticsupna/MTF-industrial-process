@@ -50,11 +50,11 @@ All of the datasets contain the following variables:
 
 # MVTF
 This folder contains all the code required to run the multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.
- - [functions.R](mvtf/functions.R)
- - update_model.R
- - theme_mtf.R
- - run_mv_model.R
- - run_uv_model.R
- - mvtf_figures.R
+ - [functions](mvtf/functions.R): `R` script with some auxiliary functions that will be used to run the model
+ - [update_model](mvtf/update_model.R): `R` code for parameter estimation and response prediction
+ - [theme_mtf](mvtf/theme_mtf.R): customized theme for figures
+ - [run_mv_model](mvtf/run_mv_model.R): `R` code to run the multivariate version of the model using a subset of the whole dataset comprising 4 consecutive weeks of data. Responses $\mathbf y_n$  
+ - [run_uv_model](mvtf/run_uv_model.R)
+ - [mvtf_figures](mvtf/mvtf_figures.R)
 
 Computations were run using R-4.2.1.
