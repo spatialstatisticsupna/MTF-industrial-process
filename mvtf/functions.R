@@ -21,7 +21,7 @@ ForecastList = function(vars, nrow, models=c('model')) {
   #
   # INPUT:
   #  > vars  : response variables
-  #  > nrow  : number of predicted row
+  #  > nrow  : number of predicted observations
   #  > models: vector with model names 
   #
   # OUTPUT: 
