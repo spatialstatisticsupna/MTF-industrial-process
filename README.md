@@ -50,7 +50,7 @@ All of the datasets contain the following variables:
 
 # MVTF
 This folder contains all the code required to run the multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.
- - functions.R
+ - [functions.R](mvtf/functions.R)
  - update_model.R
  - theme_mtf.R
  - run_mv_model.R
