@@ -210,7 +210,7 @@ for (h in 1:length(responses)) {
       
       # Prediction 
       Centroids = Centers
-      cat('  *** Prediction step in model with',q,'lags, variable',yn,'... ***')
+      cat('\n  *** Prediction step in model with',q,'lags, variable',yn,'... ***')
       for (i in 1:L) {    # loop for prediction-update
         j = i + Fi
         
@@ -270,7 +270,7 @@ for (h in 1:length(responses)) {
                              class.var='class', group.vars=c('wday','tday'),
                              lags=q, reini=reini)
       }
-      cat('  *** End of prediction step in model with',q,'lags, variable',yn,'... ***')
+      cat('\n  *** End of prediction step in model with',q,'lags, variable',yn,'... ***')
     }
     Fi = Fi + L
   }
