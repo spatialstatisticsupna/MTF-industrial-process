@@ -21,9 +21,9 @@ source('update_model.R')
 # -------------------------------------
 
 # ics : ideal cycle speed (units/min)
-# rcs : real cycle speed (= units/LT) (new: 29/12/2023)
+# rcs : real cycle speed (= units/LT) 
 
-# Times (minutes)
+# Times (minutes) 
 # OT      : opening time
 # NWT     : non working time (lack of demand, stock out, strikes, security drillings, ...)
 # SBT     : stand by time (planned maintenance, starving, loading, handling, ...)
