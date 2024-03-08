@@ -24,7 +24,7 @@ This folder contains the dataset `oee_data_4weeks.Rsd`, a subset of the complete
  - **LT**: loading time = `OT`-`SBT`
  - **rcs**: real cycle speed = `TU`/`LT`
  - **lo**: loading rate = `LT`/`OT`
- - **DT**: down time, minutes
+ - **DT**: downtime, minutes
  - **OpT**: operating time = `LT`-`DT`
  - **av**: availability rate = `OpT`/`LT`
  - **PLT**: performance losses time, minutes
@@ -48,8 +48,8 @@ This folder contains all the code required to run the multivariate and univariat
  - [functions](mvtf/functions.R): `R` script with some auxiliary functions that will be used to run the model, including functions for the clustering step (section 4.3 in the paper).
  - [update_model](mvtf/update_model.R): `R` code for parameter estimation and response prediction, including Algorithm 1 and Algorithm 2 of the paper.
  - [theme_mtf](mvtf/theme_mtf.R): customized theme for figures.
- - [run_mv_model](mvtf/run_mv_model.R): `R` code to run the multivariate version of the model using a subset of the whole dataset comprising 4 consecutive weeks of data. Responses $\mathbf y_n$, covariates $\mathbf x_n$ and classification variables $\mathbf t_n$ are chosen as stated in Section 5, but can be modified by the user. The performance of the prediction method is measured using a 4-fold cross validation technique, alternatively using one week as the test set while the remaining three weeks are used to train the model.  
+ - [run_mv_model](mvtf/run_mv_model.R): `R` code to run the multivariate version of the model using a subset of the whole dataset comprising 4 consecutive weeks of data. Responses $\mathbf y_n$, covariates $\mathbf x_n$ and classification variables $\mathbf t_n$ are chosen as stated in Section 5. Different model configurations can be tested by the user changing either of them. The performance of the prediction method is measured using a 4-fold cross-validation technique, alternatively using one week as the test set and the remaining three weeks are used to train the model.  
  - [run_uv_model](mvtf/run_uv_model.R): `R` code to run the univariate version of the multivariate code above.
- - [mvtf_figures](mvtf/mvtf_figures.R): `R` code to reproduce figures alike Figures 5.1 and 5.2 in the paper.
+ - [mvtf_figures](mvtf/mvtf_figures.R): `R` code to reproduce figures similar to Figures 5.1 and 5.2 in the paper.
 
 Computations were run using R-4.2.1.
