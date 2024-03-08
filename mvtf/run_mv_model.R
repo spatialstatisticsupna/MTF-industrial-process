@@ -255,7 +255,7 @@ for (wk in 1:length(weeks)) {
                            class.var='class', group.vars=c('wday','tday'),
                            lags=q, reini=reini)
     }
-    cat('\n  *** End of prediction step in model with',q,'lags ... ***')
+    cat('\n  *** End of prediction step in model with',q,'lags ... ***\n')
   }
   Fi = Fi + L
 }
