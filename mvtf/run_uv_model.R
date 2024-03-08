@@ -25,9 +25,8 @@ source('update_model.R')
 
 # Times (minutes) 
 # OT      : opening time
-# NWT     : non working time (lack of demand, stock out, strikes, security drillings, ...)
 # SBT     : stand by time (planned maintenance, starving, loading, handling, ...)
-# LT      : loading time (LT = OT - NWT - SBT)
+# LT      : loading time (LT = OT - SBT)
 # lo      : LT/OT
 # -------------------------------------
 # DT      : down time (failures, reactive maintenance, set-up, recalibration, ...)
@@ -45,7 +44,7 @@ source('update_model.R')
 # 
 # TIME SCHEDULE:
 # ---------------------------- OT ----------------------------
-# - NWT -|- SBT -|-------------------- LT --------------------
+# ----- SBT -----|-------------------- LT --------------------
 #                 --- DT ---|-------------- OpT --------------
 #                            -- PLT --|--------- NOpT --------
 #                                      - QLT -|------ VT -----
@@ -221,7 +220,6 @@ for (h in 1:length(responses)) {
         # compute absolute and root squared errors of last prediction
         w    = U[,'wday']
         s    = U[,'tday']
-        prev = U[,'class']
         
         if (q == 0) {  # compute only once for persistence model
           
