@@ -1,5 +1,5 @@
 # MTF-industrial-process
-Data and R code to reproduce the results described in the paper "An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes" (Miguelez et al., 2024). 
+Data and R code to reproduce the results described in the paper "An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes" (Miguelez et al., 2024). Lola
 
 # Data
 This folder contains the dataset `oee_data_4weeks.Rsd`, a subset of the complete dataset comprising data from week 21 to week 24 of the year 2020, with the following variables:
