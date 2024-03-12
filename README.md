@@ -44,7 +44,7 @@ This folder contains the dataset `oee_data_4weeks.Rsd`, a subset of the complete
  - **oee.level**: oee level
 
 # MVTF
-This folder contains all the code required to run the multivariate and univariate models and reproduce Figures 5.1 and 5.2 of the paper.  
+This folder contains all the code required to run the multivariate and univariate models and reproduce figures similar to Figures 5.1 and 5.2 of the paper.  
  - [functions](mvtf/functions.R): `R` script with some auxiliary functions that will be used to run the model, including functions for the clustering step (section 4.3 in the paper).
  - [update_model](mvtf/update_model.R): `R` code for parameter estimation and response prediction, including Algorithm 1 and Algorithm 2 of the paper.
  - [theme_mtf](mvtf/theme_mtf.R): customized theme for figures.
