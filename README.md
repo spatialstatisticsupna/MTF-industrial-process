@@ -52,4 +52,6 @@ This folder contains all the code required to run the multivariate and univariat
  - [run_uv_model](mvtf/run_uv_model.R): `R` code to run the univariate version of the multivariate code above.
  - [mvtf_figures](mvtf/mvtf_figures.R): `R` code to reproduce figures similar to Figures 5.1 and 5.2 in the paper.
 
+To ensure the proper working of the code please run the scripts in the following order: [run_mv_model](mvtf/run_mv_model.R) - [run_uv_model](mvtf/run_uv_model.R) - [mvtf_figures](mvtf/mvtf_figures.R).
+
 Computations were run using R-4.2.1.
