@@ -55,3 +55,14 @@ This folder contains all the code required to run the multivariate and univariat
 To ensure the proper working of the code please run the scripts in the following order: [run_mv_model](mvtf/run_mv_model.R) - [run_uv_model](mvtf/run_uv_model.R) - [mvtf_figures](mvtf/mvtf_figures.R).
 
 Computations were run using R-4.2.1.
+
+ 
+# References
+
+[Miguelez, F., Doncel, J. and Ugarte, M.D. (2024). An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes. _Submitted_. (ArXiv: https://arxiv.org/abs/2403.07554)
+ 
+
+
+
+
+
