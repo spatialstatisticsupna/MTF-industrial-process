@@ -57,9 +57,9 @@ OEEbw = readRDS('../data/oee_data_4weeks.Rds')
 # Variable selection #
 ######################
 
-rates = c('lo','av','pf','qu','oee')
+rates = c('av','pf','oee')
 
-responses = c('OpT','NOpT','VT')                # response variables
+responses = c('OpT','NOpT')                     # response variables
 tn = c(rates, 'OT', 'rcs', 'TU')                # classification variables
 xn = c('new.of','new.sh','ics')                 # co-variates
 ini.st.var = 'new.sh'
@@ -67,6 +67,7 @@ ini.st.var = 'new.sh'
 r  = length(rates)
 p  = length(tn)
 m2 = length(xn)
+m = length(responses)
 
 
 ##################################################################
@@ -98,7 +99,7 @@ for (mod in names(ForecastResults)) {
 ############################
 # Start loop for responses #
 ############################
-for (h in 1:length(responses)) {
+for (h in 1:m) {
   yn = responses[h]
   m1 = 1
   
@@ -217,9 +218,10 @@ for (h in 1:length(responses)) {
         U = predictors(ClassTest, i, yn, q, xn, ini.st.var, 'class')
         forecast = Prediction(Params, U, 'class', c('wday','tday'))
         
-        # compute absolute and root squared errors of last prediction
+        # compute absolute and squared errors of last prediction
         w    = U[,'wday']
         s    = U[,'tday']
+        prev = U[,'class']
         
         if (q == 0) {  # compute only once for persistence model
           
@@ -240,10 +242,10 @@ for (h in 1:length(responses)) {
         ForecastResults[[qname]][[yn]][j, 'upper']      = yhat+1.96*shat
         ForecastResults[[qname]][[yn]][j, 'abs.err']    = abs(yhat - y)
         ForecastResults[[qname]][[yn]][j, 'sq.err']     = (yhat - y)**2
+        ForecastResults[[qname]][[yn]][j, 'coverage']   = as.integer(y>=lower & y<=upper)
       
         
         # last observation assignment and centroids updating 
-        #if (i%%100==0) cat('*** Updating centroids and model parameters ... ***\n')
         sizes = Centroids$n
         
         if (cluster.assign == 'knn') {
@@ -277,7 +279,8 @@ for (h in 1:length(responses)) {
 
 
 
-# gather prediction results in a supermatrix
+# Gather prediction results in a super-matrix
+
 models = names(ForecastResults)
 mtf_uv_forecast.aux = vector('list', length=length(models))
 names(mtf_uv_forecast.aux) = models
@@ -291,10 +294,11 @@ rm(mtf_uv_forecast.aux)
 
 
 # Folder to save results
+
 if(!file.exists("../results")) dir.create("../results")
 
+
+
 # Save the results
+
 saveRDS(mtf_uv_forecast, file="../results/MTF_uv_forecast.Rds")
-#save(mtf_uv_forecast, file='results/MTF_uv_forecast.RData')
-
-
