@@ -13,7 +13,7 @@ source('theme_mtf.R')
 # Load the multivariate results #
 #################################
 
-mv_forecast = readRDS('../results/MTF_mv_forecast_real_10072024.Rds')
+mv_forecast = readRDS('../results/MTF_mv_forecast.Rds')
 # load('results/MTF_mv_forecast.RData'); mv_forecast=mtf_mv_forecast; rm(mtf_mv_forecast)
 
 
