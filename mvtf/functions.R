@@ -21,7 +21,7 @@ ForecastList = function(vars, nrow, models=c('model')) {
   #
   # INPUT:
   #  > vars  : response variables
-  #  > nrow  : number of predicted observations
+  #  > nrow  : number of predicted row
   #  > models: vector with model names 
   #
   # OUTPUT: 
@@ -29,7 +29,7 @@ ForecastList = function(vars, nrow, models=c('model')) {
   
   FR = list()
   cnames = c('shift','model','var','value','pred',
-             'pr.err','lower','upper','abs.err','sq.err')
+             'pr.err','lower','upper','abs.err','sq.err','coverage')
   nc = length(cnames)
   for (m in models) { 
     FR[[m]] = list()
@@ -69,7 +69,7 @@ PerformKMClustering = function(data, threshold=0.7) {
   gof        = 0
   while (gof < threshold) {
     n_clusters = n_clusters + 1
-    km  = kmeans(centers=n_clusters, x=data, iter.max=1000, nstart=50)
+    km  = kmeans(x=data, centers=n_clusters, iter.max=1000, nstart=50)
     gof = km$betweenss/km$totss
   }
   message(sprintf('Extracted %i clusters. Ratio BSS/TSS = %.2f\n', n_clusters, gof*100))
@@ -111,7 +111,7 @@ ClusteringCentroids = function(data, classif.vars, add.vars, clustering) {
   CENTROIDS = data %>% 
     mutate(KM = clustering$cluster) %>%
     group_by(KM) %>%
-    select(all_of(c(classif.vars, add.vars))) %>%
+    dplyr::select(all_of(c(classif.vars, add.vars))) %>%
     summarise_all(.funs=mean)
   CENTROIDS$n    = KM.count$n
   CENTROIDS$prop = round(100*CENTROIDS$n/N0,2)
@@ -154,3 +154,4 @@ update_centroids = function(centr.mat, new_data, nc, vars) {
   
   return(centr.mat)
 }
+
