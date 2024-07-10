@@ -13,7 +13,7 @@ source('theme_mtf.R')
 # Load the multivariate results #
 #################################
 
-mv_forecast = readRDS('../results/MTF_mv_forecast.Rds')
+mv_forecast = readRDS('../results/MTF_mv_forecast_real_10072024.Rds')
 # load('results/MTF_mv_forecast.RData'); mv_forecast=mtf_mv_forecast; rm(mtf_mv_forecast)
 
 
@@ -24,7 +24,9 @@ mv_forecast = readRDS('../results/MTF_mv_forecast.Rds')
 yn      = mv_forecast$var %>% unique()
 shifts  = mv_forecast$shift %>% unique()
 models  = mv_forecast$model %>% unique()
-metrics = c('pr.err','mae','rmse')
+metrics = c('pr.err','mae','rmse','coverage')
+lm      = length(metrics)
+m1      = length(yn)
 
 MVTF.metrics = tibble(model=rep(models,length(shifts)),
                       shift=rep(shifts,each=length(models)))
@@ -33,36 +35,43 @@ MVTF.metrics[,do.call('paste',c(expand.grid(metrics,yn),sep='_'))] = NA
 for (r in 1:nrow(MVTF.metrics)) {
   mod = MVTF.metrics$model[r]
   shf = MVTF.metrics$shift[r]
-  for (v in 1:length(yn)) {
+  for (v in 1:m1) {
     X = mv_forecast %>%
       filter(model==mod & shift==shf & var==yn[[v]])
     pr   = X %>% pull(pr.err) %>% mean() %>% round(.,3)
     mae  = X %>% pull(abs.err) %>% mean() %>% round(.,3)
     rmse = X %>% pull(sq.err) %>% mean() %>% sqrt() %>% round(.,3)
-    MVTF.metrics[r,3*(v-1) + 3] = pr
-    MVTF.metrics[r,3*(v-1) + 4] = mae
-    MVTF.metrics[r,3*(v-1) + 5] = rmse
+    cvrg = (X %>% pull(coverage) %>% mean() %>% round(.,4))*100
+    MVTF.metrics[r,lm*(v-1) + 3] = pr
+    MVTF.metrics[r,lm*(v-1) + 4] = mae
+    MVTF.metrics[r,lm*(v-1) + 5] = rmse
+    MVTF.metrics[r,lm*(v-1) + 6] = cvrg
   }
 }
 
 
 
-################################################################################################################
-# Figure 5.1: Boxplot of average prediction error, MAE and RMSE of each model and each variable by work shifts #
-################################################################################################################
+##############################################################################################
+# Figure 5.1: Boxplots MAE, RMSE and coverage of each model and each variable by work shifts #
+##############################################################################################
 
 bp.metr_by_sh = MVTF.metrics %>% 
-  reshape2::melt(id.vars=1:2, measure.vars=c(4,5,7,8,10,11)) %>% 
+  reshape2::melt(id.vars=1:2, measure.vars=c(3:10)) %>% 
   ggplot(aes(x=model, y=value)) +
   geom_boxplot(aes(fill=model)) + 
+  geom_point(aes(color=model), alpha=0.25) + 
   coord_flip() + 
   scale_fill_viridis(discrete=TRUE, option="H") +
-  labs(y=NULL, fill=NULL, x=NULL) +
-  guides(fill='none') + 
+  scale_color_viridis(discrete=TRUE, option="H") +
+  labs(y=NULL, fill=NULL, x=NULL, color=NULL) +
+  guides(fill='none', color='none') + 
   scale_x_discrete(labels=c("q0"="no lags", "q1"="1 lag", "q2"="2 lags",
                             "q3"="3 lags", "q4"="4 lags", "q5"="5 lags",
-                            'persistence'='persistence')) +
-  facet_wrap(vars(variable), nrow=3, scales='free_x') +
+                            'persistence'='persistence',
+                            "VARX_0"="VARX(0)", "VARX_1"="VARX(1)",
+                            "VARX_2"="VARX(2)", "VARX_3"="VARX(3)",
+                            "VARX_4"="VARX(4)", "VARX_5"="VARX(5)")) +
+  facet_wrap(vars(variable), nrow=m1, scales='free_x') +
   theme_mtf 
 
 bp.metr_by_sh
