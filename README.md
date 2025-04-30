@@ -59,7 +59,7 @@ Computations were run using R-4.2.1.
  
 # References
 
-Miguelez, F., Doncel, J. and Ugarte, M.D. (2024). An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes. _Submitted_. (ArXiv: https://arxiv.org/abs/2403.07554)
+Miguelez, F., Doncel, J. and Ugarte, M.D. (2024). An Adaptive Learning Approach to Multivariate Time Forecasting in Industrial Processes. _Applied Stochastic Models in Business and Industry_. Accepted (ArXiv: https://arxiv.org/abs/2403.07554)
  
 
 
